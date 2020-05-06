@@ -1,10 +1,10 @@
 language: generic
 sudo: required # We give admin right
-services: # We indicate to travis to install a copy of trash in our running container
+services: # We indicate to travis to install a copy of docker in our running container
   - docker
 
 before_install: # Commands to be executed before our test are run
-  - docker build -t nguyenanht/simpleflaskapp -f .
+  - docker build -t nguyenanht/simpleflaskapp .
 
 script: # Every commands needed to run the test
   - docker run -e CI=true nguyenanht/simpleflaskapp python3 -m pytest # CI=true
