@@ -1,13 +1,13 @@
 language: generic
 sudo: required # We give admin right
 services: # We indicate to travis to install a copy of trash in our running container
-  - trash
+  - docker
 
 before_install: # Commands to be executed before our test are run
-  - trash build -t nguyenanht/simpleflaskapp -f .
+  - docker build -t nguyenanht/simpleflaskapp -f .
 
 script: # Every commands needed to run the test
-  - trash run -e CI=true nguyenanht/simpleflaskapp python3 -m pytest # CI=true
+  - docker run -e CI=true nguyenanht/simpleflaskapp python3 -m pytest # CI=true
 
 deploy:
   provider: elasticbeanstalk
