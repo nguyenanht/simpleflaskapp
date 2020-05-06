@@ -4,10 +4,10 @@ services: # We indicate to travis to install a copy of docker in our running con
   - docker
 
 before_install: # Commands to be executed before our test are run
-  - docker build -t nguyenanht/simpleflaskapp -f Dockerfile .
+  - docker build -t nguyenanht/simpleflaskapp -f Dockerfile.test .
 
 script: # Every commands needed to run the test
-  - docker run -e CI=true nguyenanht/simpleflaskapp "python3 -m pytest -v" # CI=true
+  - docker run -e CI=true nguyenanht/simpleflaskapp python3 -m pytest # CI=true
 
 deploy:
   provider: elasticbeanstalk
