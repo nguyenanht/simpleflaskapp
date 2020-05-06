@@ -7,7 +7,7 @@ before_install: # Commands to be executed before our test are run
   - docker build -t nguyenanht/simpleflaskapp -f Dockerfile .
 
 script: # Every commands needed to run the test
-  - docker run -e CI=true nguyenanht/simpleflaskapp python3 -m pytest # CI=true
+  - docker run -e CI=true nguyenanht/simpleflaskapp python -m pytest # CI=true
 
 deploy:
   provider: elasticbeanstalk
