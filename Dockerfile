@@ -15,6 +15,5 @@ RUN pip3 install -r requirements.txt
 
 COPY . ./
 EXPOSE 5000
-# CMD ["uwsgi", "app.ini"]
-ENTRYPOINT ["python3"]
-CMD ["application.py"]
+CMD ["uwsgi", "app.ini"]
+# CMD ["application.py"]
