@@ -14,6 +14,6 @@ COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
 
 COPY . ./
-EXPOSE 80
+EXPOSE 8080
 CMD ["uwsgi", "app.ini"]
 # CMD ["application.py"]
