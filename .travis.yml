@@ -3,8 +3,11 @@ sudo: required # We give admin right
 services: # We indicate to travis to install a copy of docker in our running container
   - docker
 
+before_install: # Commands to be executed before our test are run
+  - docker build -t nguyenanht/simpleflaskapp -f Dockerfile.test .
+
 script: # Every commands needed to run the test
-  - docker-compose build
+  - docker run -e CI=true nguyenanht/simpleflaskapp python3 -m pytest # CI=true
 
 deploy:
   provider: elasticbeanstalk
@@ -17,4 +20,5 @@ deploy:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-  script: docker-compose up
+  script:
+
